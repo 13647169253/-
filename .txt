@@ -1,0 +1,19 @@
+数据可视化
+   技术栈: 
+           H5C3
+           jQuery  +  js
+           盒子布局,flex及rem适配
+           ES6模板字符串
+           ECharts 可视化库
+   使用的新的属性
+         图片边框  :  border-image
+
+   ECharts 可视化库: 
+         1. 下载并引用echarts.js文件
+         2. 准备一个具备大小的DOM容器
+         3. 初始化echarts实例对象
+         4.*指定配置项和数据(option)
+         5. 将配置项设置给实例对象
+      
+   插件
+      Live serve : 
