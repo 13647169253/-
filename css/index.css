@@ -133,6 +133,12 @@ a {
 
 }
 
+.panel h3 {
+  font-size: 0.25rem;
+  color: #fff;
+  font-weight: 400;
+}
+
 .overview {
   height: 1.375rem;
 }
@@ -262,4 +268,45 @@ a {
 
 .marquee-view .marquee:hover {
   animation-play-state: paused;
+}
+
+/* 点位 */
+.point {
+  height: 4.25rem;
+}
+
+.point .chart {
+  display: flex;
+  margin-top: 0.3rem;
+  justify-content: space-between;
+}
+
+.point .pie {
+  width: 3.9rem;
+  height: 3rem;
+  margin-left: -0.125rem;
+  /* background-color: pink; */
+}
+
+.point .data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2.1rem;
+  padding: .45rem .375rem;
+  box-sizing: border-box;
+  background-image: url(../images/rect.png);
+  background-size: cover;
+}
+
+.point h4 {
+  margin-bottom: 0.15rem;
+  font-size: .35rem;
+  color: #fff;
+}
+
+.point span {
+  display: block;
+  color: #4c9bfd;
+  font-size: .2rem;
 }
