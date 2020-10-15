@@ -196,7 +196,7 @@ $(function () {
                   1560,
                   1400,
                   item,
-                  item, 
+                  item,
                   item,
                   900,
                   750,
@@ -214,6 +214,118 @@ $(function () {
          // 让我们的图表调用 resize这个方法
          myChart.resize();
       });
+   })();
+   // 订单
+   // 销售额模块
+   (function () {
+      // 数据
+      var data = {
+         year: [
+            [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
+            [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79]
+         ],
+         quarter: [
+            [23, 75, 12, 97, 21, 67, 98, 21, 43, 64, 76, 38],
+            [43, 31, 65, 23, 78, 21, 82, 64, 43, 60, 19, 34]
+         ],
+         month: [
+            [34, 87, 32, 76, 98, 12, 32, 87, 39, 36, 29, 36],
+            [56, 43, 98, 21, 56, 87, 43, 12, 43, 54, 12, 98]
+         ],
+         week: [
+            [43, 73, 62, 54, 91, 54, 84, 43, 86, 43, 54, 53],
+            [32, 54, 34, 87, 32, 45, 62, 68, 93, 54, 54, 24]
+         ]
+      }
+      // 1. 实例化对象
+      var myChart = echarts.init(document.querySelector(".line"));
+      // 2. 指定配置和数据 
+      var option = {
+         color: ['#00f2f1', '#ed3f35'],
+         tooltip: {
+            trigger: "axis"
+         },
+         legend: {
+            right: "8%",
+            // data: ["预期销售额", "实际销售额"],
+            textStyle: {
+               color: "#4c9bfd"
+            }
+         },
+         grid: {
+            top: "20%",
+            left: "3%",
+            right: "4%",
+            bottom: "3%",
+            show: true,
+            borderColor: "#012f4a",
+            containLabel: true
+         },
+
+         xAxis: {
+            type: "category",
+            boundaryGap: false,
+            data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+            axisTick: { show: false },
+            axisLabel: { color: '#4c9bfd' },
+            axisLine: { show: false }
+         },
+         yAxis: {
+            type: "value",
+            axisTick: { show: false },
+            axisLabel: { color: '#4c9bfd' },
+            splitLine: {
+               lineStyle: {
+                  color: '#012f4a' // 分割线颜色
+               }
+            }
+         },
+         series: [
+            {
+               name: '预期销售额',
+               type: "line",
+               stack: "总量1",
+               data: data.year[0],
+               smooth: true
+            },
+            {
+               name: '实际销售额',
+               type: "line",
+               stack: "总量",
+               data: data.year[1],
+               smooth: true
+            }
+         ],
+      };
+      // 3. 把配置和数据给实例对象  
+      myChart.setOption(option);
+      // 数据切换
+      let index = 0
+      $('.sales .caption a').on('click', function () {
+         index = $(this).index() - 1
+         $(this).addClass('active').siblings('a').removeClass('active');
+         let type = $(this).attr('data-index');
+         option.series[0].data = data[type][0];
+         option.series[1].data = data[type][1];
+         myChart.setOption(option);
+      })
+      let atimer = setInterval(function () {
+         index++
+         if (index > 3) index = 0
+         $('.sales .caption a').eq(index).click();
+      }, 2000)
+      $('.line').hover(
+         function () {
+            clearInterval(atimer)
+         },
+         function () {
+            clearInterval(atimer)
+            atimer = setInterval(function () {
+               index++
+               if (index > 3) index = 0
+               $('.sales .caption a').eq(index).click();
+            }, 2000)
+         })
    })();
 })
 
