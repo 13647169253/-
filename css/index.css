@@ -96,15 +96,15 @@ a {
   display: flex;
 }
 
-.column {
+.viewport .column {
   flex: 3;
   position: relative;
   /* background-color: pink; */
 }
 
-.column:nth-child(2) {
+.viewport .column:nth-child(2) {
   flex: 4;
-  margin: 1.333rem 0.833rem 0;
+  margin: .333rem 0.25rem 0;
 }
 
 /* 公共边框背景 */
@@ -309,4 +309,158 @@ a {
   display: block;
   color: #4c9bfd;
   font-size: .2rem;
+}
+
+/* 地图  */
+.map {
+  height: 7.225rem;
+  margin-bottom: 0.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.map h3 {
+  line-height: 1;
+  padding: 0.2rem 0;
+  margin: 0;
+  font-size: 0.25rem;
+  color: #fff;
+  font-weight: 400;
+}
+
+.map .icon-cube {
+  color: #68d8fe;
+}
+
+.map .chart {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.map .geo {
+  width: 100%;
+  height: 100%;
+}
+
+/* 地图  */
+.map {
+  height: 7.225rem;
+  margin-bottom: 0.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.map h3 {
+  line-height: 1;
+  padding: 0.2rem 0;
+  margin: 0;
+  font-size: 0.25rem;
+  color: #fff;
+  font-weight: 400;
+}
+
+.map .icon-cube {
+  color: #68d8fe;
+}
+
+.map .chart {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.map .geo {
+  width: 100%;
+  height: 100%;
+}
+
+/* 用户模块 */
+.users {
+  height: 4.25rem;
+  display: flex;
+}
+
+.users .chart {
+  display: flex;
+  margin-top: .3rem;
+}
+
+.users .bar {
+  width: 7.35rem;
+  height: 3rem;
+}
+
+.users .data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2.1rem;
+  padding: .45rem .375rem;
+  box-sizing: border-box;
+  background-image: url(../images/rect.png);
+  background-size: cover;
+}
+
+.users h4 {
+  margin-bottom: .15rem;
+  font-size: .35rem;
+  color: #fff;
+}
+
+.users span {
+  display: block;
+  color: #4c9bfd;
+  font-size: 0.2rem;
+}
+
+/* 订单 */
+.order {
+  height: 1.875rem;
+}
+
+.order .filter {
+  display: flex;
+}
+
+.order .filter a {
+  display: block;
+  height: 0.225rem;
+  line-height: 1;
+  padding: 0 0.225rem;
+  color: #1950c4;
+  font-size: 0.225rem;
+  border-right: 0.025rem solid #00f2f1;
+}
+
+.order .filter a:first-child {
+  padding-left: 0;
+}
+
+.order .filter a:last-child {
+  border-right: none;
+}
+
+.order .filter a.active {
+  color: #fff;
+  font-size: 0.25rem;
+}
+
+.order .data {
+  display: flex;
+  margin-top: 0.25rem;
+}
+
+.order .item {
+  width: 50%;
+}
+
+.order h4 {
+  font-size: 0.35rem;
+  color: #fff;
+  margin-bottom: 0.125rem;
+}
+
+.order span {
+  display: block;
+  color: #4c9bfd;
+  font-size: 0.2rem;
 }
