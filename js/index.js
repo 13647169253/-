@@ -216,6 +216,50 @@ $(function () {
       });
    })();
    // 订单
+   // 订单功能
+   (function () {
+      var index = 0
+      // 1. 准备数据
+      var data = {
+         day365: { orders: '20,301,987', amount: '99834' },
+         day90: { orders: '301,987', amount: '9834' },
+         day30: { orders: '1,987', amount: '3834' },
+         day1: { orders: '987', amount: '834' }
+      }
+      // 获取显示 订单数量 容器
+      var $h4Orders = $('.order h4:eq(0)')
+      // 获取显示 金额数量 容器
+      var $h4Amount = $('.order h4:eq(1)')
+      $('.order .filter a').on('click', function () {
+         // 2. 点击切换激活样式
+         index = $(this).index()
+         $(this).addClass('active').siblings().removeClass('active')
+         // // 3. 点击切换数据
+         let dataset = $(this).attr('data-index')
+         var currdata = data[dataset]
+         $h4Orders.html(currdata.orders)
+         $h4Amount.html(currdata.amount)
+      })
+      // 4. 开启定时器切换数据
+      let htimer = setInterval(function () {
+         index++
+         if (index > 3) index = 0
+         $('.order .filter a').eq(index).click()
+      }, 2000)
+      // 
+      $('.order .filter').hover(
+         function () {
+            clearInterval(htimer)
+         },
+         function () {
+            clearInterval(htimer)
+            htimer = setInterval(function () {
+               index++
+               if (index > 3) index = 0
+               $('.order .filter a').eq(index).click();
+            }, 2000)
+         })
+   })();
    // 销售额模块
    (function () {
       // 数据
