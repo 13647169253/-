@@ -575,7 +575,45 @@ $(function () {
             </span>
         </li >`
       $(".sup").html(li);
-
     })
+    function render(obj) {
+      obj.addClass('active').siblings().removeClass();
+      let index = obj.index();
+      let newLi = '';
+      $.each(hotData[index].brands, function (i, e) {
+        newLi +=
+          `<li>
+            <span>${e.name}</span>
+            <span>${e.num} <s class=${e.flag ? 'icon-up' : 'icon-down'}></s></span>
+          </li>`
+      })
+      $('.sub').html(newLi)
+    }
+    let index = 0;
+    $('.province .sup').on('mouseenter', 'li', function () {
+      index = $(this).index()
+      render($(this))
+    })
+    let lis = $('.province .sup li')
+    $(lis).eq(0).mouseenter();
+    let listimer = setInterval(function () {
+      index++;
+      if (index >= lis.length) index = 0
+      // $(lis).eq(index).mouseenter();  讲鼠标事件换成数据渲染
+      render($(lis).eq(index))
+    }, 4000)
+    $('.province .sup').hover(
+      function () {
+        clearInterval(listimer)
+      },
+      function () {
+        clearInterval(listimer)
+        listimer = setInterval(function () {
+          index++;
+          if (index >= lis.length) index = 0
+          // $(lis).eq(index).mouseenter();
+          render($(lis).eq(index))
+        }, 4000)
+      })
   })()
 })
